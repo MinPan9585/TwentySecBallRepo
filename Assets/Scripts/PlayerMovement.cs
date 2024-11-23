@@ -5,11 +5,19 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Vector3 mousePos;
-    public Transform previewArrow;
-    public Rigidbody rb;
-    public Animator anim;
+    Transform previewArrow;
+    Rigidbody rb;
+    Animator anim;
     float imageLocalScale = 0.09f;
+    public bool isMoving = false;
     //Vector3 direction;
+
+    private void Awake()
+    {
+        previewArrow = GetComponent<Transform>().GetChild(1);
+        rb = GetComponent<Rigidbody>();
+        anim = transform.GetChild(0).GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -41,10 +49,12 @@ public class PlayerMovement : MonoBehaviour
         if (rb.velocity.magnitude > 0.55f)
         {
             anim.SetBool("isMoving", true);
+            isMoving = true;
         }
         else
         {
             anim.SetBool("isMoving", false);
+            isMoving = false;
         }
 
         if(rb.velocity.x >= 0.5f)
