@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.Log(rb.velocity.magnitude);
 
-        if (rb.velocity.magnitude > 0.35f)
+        if (rb.velocity.magnitude > 0.55f)
         {
             anim.SetBool("isMoving", true);
         }
