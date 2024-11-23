@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             // Log the name of the object hit by the raycast
-            Debug.Log("Hit: " + hit.collider.name);
+            //Debug.Log("Hit: " + hit.collider.name);
             //direction = hit.point - transform.position;
             previewArrow.LookAt(new Vector3(hit.point.x, 0, hit.point.z));
         }
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(previewArrow.forward * 10, ForceMode.Impulse);
         }
 
-        Debug.Log(rb.velocity.magnitude);
+        //Debug.Log(rb.velocity.magnitude);
 
         if (rb.velocity.magnitude > 0.55f)
         {
