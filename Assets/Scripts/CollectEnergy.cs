@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CollectEnergy : MonoBehaviour
 {
     bool isCollecting = true;
-    int energy = 0;
+    int energy = 8;
     public Image energyBarImage;
 
     private void Start()
@@ -25,6 +25,7 @@ public class CollectEnergy : MonoBehaviour
             {
                 // change to final state
                 isCollecting = false;
+                PlayerMovement.isChange = true;
             }
         }
     }

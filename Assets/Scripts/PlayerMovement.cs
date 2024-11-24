@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     Animator anim;
     float imageLocalScale = 0.09f;
     public bool isMoving = false;
+    public static bool isChange = false;
+    public RuntimeAnimatorController animator_Change;
+
+    private bool listenChange = true;
     //Vector3 direction;
 
     private void Awake()
@@ -27,7 +33,17 @@ public class PlayerMovement : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        
+        //ChangeAvatar
+        if (listenChange)
+        {
+            if (isChange)
+            {
+                transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = animator_Change;
+                anim = transform.GetChild(0).GetComponent<Animator>();
+                
+                listenChange = false;
+            }
+        }
 
         // Perform the raycast
         if (Physics.Raycast(ray, out hit))
@@ -41,7 +57,18 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             //rb.AddForce(direction.normalized * 10, ForceMode.Impulse);
-            rb.AddForce(previewArrow.forward * 10, ForceMode.Impulse);
+            if (isChange)
+            {
+                rb.AddForce(previewArrow.forward * 12, ForceMode.Impulse);
+            }
+            else
+            {
+                rb.AddForce(previewArrow.forward * 10, ForceMode.Impulse);
+            }
+            if (!isMoving)
+            {
+                
+            }
         }
 
         //Debug.Log(rb.velocity.magnitude);

@@ -27,7 +27,11 @@ public class EnemyOne : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            if (pm.isMoving)
+            if (PlayerMovement.isChange)
+            {
+                Destroy(gameObject);
+            }
+            else if (pm.isMoving)
             {
                 isHit = true;
             }
