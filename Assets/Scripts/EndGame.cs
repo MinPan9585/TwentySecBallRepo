@@ -35,6 +35,7 @@ public class EndGame : MonoBehaviour
         // 倒计时结束后的操作
         gameOverText.GetComponent<Text>().text = "You Win!";
         gameOverText.SetActive(true);
+        Time.timeScale = 0;
     }
     IEnumerator SpawnEnemy()
     {

@@ -11,15 +11,15 @@ public class EnemyOne : MonoBehaviour
     public GameObject bullet;
     Animator anim;
     Vector3 playerPos;
-    PlayerMovement pm;
     Rigidbody rb;
+    private GameObject player;
     public float bulletSpeed;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         anim = transform.GetChild(0).GetComponent<Animator>();
-        pm = GameObject.Find("Character").GetComponent<PlayerMovement>();
+        player = GameObject.Find("Player");
 
     }
 
@@ -31,13 +31,13 @@ public class EnemyOne : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            else if (pm.isMoving)
+            else if (PlayerControl.isMoving)
             {
                 isHit = true;
             }
             else
             {
-                pm.GetComponent<PlayerHealth>().GetHurt();
+                player.GetComponent<PlayerHealth>().GetHurt();
             }
         }
     }
@@ -45,7 +45,7 @@ public class EnemyOne : MonoBehaviour
     void Update()
     {
         //Debug.Log(isHit);
-        playerPos = GameObject.Find("Character").transform.position;
+        playerPos = player.transform.position;
 
         if (isHit && !isPausing)
         {
@@ -90,12 +90,10 @@ public class EnemyOne : MonoBehaviour
 
     IEnumerator PauseThree()
     {
-        Debug.Log("start");
         anim.SetTrigger("getHit");
         yield return new WaitForSeconds(3);
         isHit = false;
         startAction = false;
         isPausing = false;
-        Debug.Log("end");
     }
 }
