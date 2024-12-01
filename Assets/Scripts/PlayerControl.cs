@@ -1,4 +1,5 @@
 using System.Collections;
+using Cinemachine.Utility;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -10,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     private Vector3 lastMousePosition;
     private Vector3 dashDirection;
     private Vector3 mousePos;
-    public float refractionIndex = 1.33f; // 折射率
+    private Coroutine drawDashPathCoroutine;
     public LineRenderer lineRenderer;
     public LineRenderer normalLineRenderer;
     private struct NextRay
@@ -53,6 +54,12 @@ public class PlayerControl : MonoBehaviour
     {
         if (lastMousePosition != Input.mousePosition)
         {
+            if (drawDashPathCoroutine != null)
+            {
+                StopCoroutine(drawDashPathCoroutine);
+                drawDashPathCoroutine = null;
+            }
+            lineRenderer.positionCount = 0;
             Vector3 tempDirection = new Vector3();
             // 创建射线鼠标点击方向的射线
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -65,7 +72,8 @@ public class PlayerControl : MonoBehaviour
             dashDirection = new Vector3(tempDirection.x, 0, tempDirection.z);
             dashDirection.Normalize();
             lastMousePosition = Input.mousePosition;
-            DrawDashPath();
+            //DrawDashPath();
+            drawDashPathCoroutine = StartCoroutine(DrawDashPath_IE());
         }
     }
     
@@ -95,6 +103,32 @@ public class PlayerControl : MonoBehaviour
         }
     }
     
+    //协程生成运动路径
+    IEnumerator DrawDashPath_IE()
+    {
+        //绘制起始点
+        lineRenderer.positionCount++;
+        lineRenderer.SetPosition(lineRenderer.positionCount - 1, transform.position);
+        float remainingDistance = dashDistance;
+        Vector3 nowdirection = dashDirection;
+        Vector3 nowPosition = transform.position;
+        while (remainingDistance > 0.0f)
+        {
+            NextRay nextRay = CastRay(nowPosition, nowdirection, remainingDistance);
+            // 绘制路径点到LineRenderer
+            lineRenderer.positionCount++;
+            lineRenderer.SetPosition(lineRenderer.positionCount - 1, nextRay.hitpoint);
+            if (nextRay.distance < 0)
+            {
+                break;
+            }
+            remainingDistance -= nextRay.distance;
+            nowdirection = nextRay.direction;
+            nowPosition = nextRay.hitpoint;
+            yield return null;
+        }
+    }
+    
     NextRay CastRay(Vector3 origin, Vector3 direction, float maxDistance)
     {
         NextRay nextRay = new NextRay();
@@ -103,19 +137,22 @@ public class PlayerControl : MonoBehaviour
         {
             // 计算折射方向
             ///找到正确的法线向量
-            Vector3 normal_collider = hit.collider.gameObject.transform.forward;
-            Vector3 normal = new Vector3(normal_collider.z, 0, -normal_collider.x);
+            //Vector3 normal_collider = hit.collider.gameObject.transform.forward;
+            /*
+             Vector3 normal = new Vector3(normal_collider.z, 0, -normal_collider.x);
             if (Vector3.Dot(normal, direction) > 0)
             {
                 normal *= -1;
             }
+            */
+            Vector3 normal = Refract_Normal(direction, hit.collider.gameObject.transform.forward, hit.collider.gameObject.transform.position,hit.point,hit.collider.gameObject.transform.localScale.x * 0.5f, hit.collider.gameObject.transform.localScale.z  * 0.5f);
             Vector3 refractedDirection = Refract(direction, normal);
             nextRay.hitpoint = hit.point - rayFiner * direction;
             nextRay.direction = refractedDirection;
             nextRay.distance = Vector3.Distance(origin, nextRay.hitpoint);
             //Debug法线
-            normalLineRenderer.SetPosition(0, nextRay.hitpoint);
-            normalLineRenderer.SetPosition(1, nextRay.hitpoint+normal*5f);
+            //normalLineRenderer.SetPosition(0, nextRay.hitpoint);
+            //normalLineRenderer.SetPosition(1, nextRay.hitpoint+normal*5f);
         }
         else
         {
@@ -126,6 +163,31 @@ public class PlayerControl : MonoBehaviour
         return nextRay;
     }
 
+    //计算选取折射的方向向量
+    Vector3 Refract_Normal(Vector3 direction,Vector3 objectForward, Vector3 objectPoint, Vector3 hitpoint, float x, float z)
+    {
+        Vector3 normal;
+        Vector3 point = hitpoint - objectPoint;
+        if (point.x - z > 0.01f)
+        {
+            Debug.Log("Z边");
+            normal = new Vector3(objectForward.x, 0, objectForward.z);
+            if (Vector3.Dot(normal, direction) > 0)
+            {
+                normal *= -1;
+            }
+        }
+        else
+        {
+            Debug.Log("X边");
+            normal = new Vector3(-objectForward.z, 0, objectForward.x);
+            if (Vector3.Dot(normal, direction) > 0)
+            {
+                normal *= -1;
+            }
+        }
+        return normal;
+    }
     // 折射计算函数
     Vector3 Refract(Vector3 I, Vector3 N)
     {
