@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18988,6 +18989,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1985759627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1766672575
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 118165017511908187, guid: 545fc8cb7c550f4479182f4087bbe97b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tree1
+      objectReference: {fileID: 0}
+    - target: {fileID: 624429317982479327, guid: 545fc8cb7c550f4479182f4087bbe97b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 624429317982479327, guid: 545fc8cb7c550f4479182f4087bbe97b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2896235
+      objectReference: {fileID: 0}
+    - target: {fileID: 624429317982479327, guid: 545fc8cb7c550f4479182f4087bbe97b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 624429317982479327, guid: 545fc8cb7c550f4479182f4087bbe97b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.07034113
+      objectReference: {fileID: 0}
+    - target: {fileID: 624429317982479327, guid: 545fc8cb7c550f4479182f4087bbe97b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0058632027
+      objectReference: {fileID: 0}
+    - target: {fileID: 624429317982479327, guid: 545fc8cb7c550f4479182f4087bbe97b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.99405855
+      objectReference: {fileID: 0}
+    - target: {fileID: 624429317982479327, guid: 545fc8cb7c550f4479182f4087bbe97b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.08285815
+      objectReference: {fileID: 0}
+    - target: {fileID: 624429317982479327, guid: 545fc8cb7c550f4479182f4087bbe97b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 9.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 624429317982479327, guid: 545fc8cb7c550f4479182f4087bbe97b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 3771.905
+      objectReference: {fileID: 0}
+    - target: {fileID: 624429317982479327, guid: 545fc8cb7c550f4479182f4087bbe97b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 545fc8cb7c550f4479182f4087bbe97b, type: 3}
 --- !u!1 &1781802199
 GameObject:
   m_ObjectHideFlags: 0
@@ -23179,7 +23248,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118167881}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0023539208, y: 0.9341944, z: -0.3567034, w: 0.006164841}
+  m_LocalRotation: {x: 0.0023539108, y: 0.9341944, z: -0.35670343, w: 0.006164814}
   m_LocalPosition: {x: -1.5519756, y: 9.44, z: 18.38913}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23379,7 +23448,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131582193}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0023539208, y: 0.9341944, z: -0.3567034, w: 0.006164841}
+  m_LocalRotation: {x: 0.0023539108, y: 0.9341944, z: -0.35670343, w: 0.006164814}
   m_LocalPosition: {x: -1.5519756, y: 9.44, z: 18.38913}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23424,12 +23493,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!114 &2131582198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23799,3 +23868,4 @@ SceneRoots:
   - {fileID: 2118167883}
   - {fileID: 1985759627}
   - {fileID: 186372832}
+  - {fileID: 1766672575}

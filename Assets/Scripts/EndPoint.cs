@@ -29,6 +29,6 @@ public class EndPoint : MonoBehaviour
             gameOverText.SetActive(true);
             Time.timeScale = 0;
         }
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }
