@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1936782559357041525}
   - component: {fileID: 3606607333217665607}
   - component: {fileID: 5770603965627329183}
+  - component: {fileID: -8292184245944426034}
   m_Layer: 0
   m_Name: Tree1
   m_TagString: Untagged
@@ -27,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118165017511908187}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08306536, y: -0, z: -0, w: 0.9965441}
+  m_LocalRotation: {x: 0, y: 0.9965438, z: -0.08306907, w: 0}
   m_LocalPosition: {x: 12.91, y: 27.088, z: -84.42}
   m_LocalScale: {x: 2.7584004, y: 4.479161, z: 1.3608962}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 9.53, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 9.53, y: 180, z: 0}
 --- !u!33 &1936782559357041525
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -106,3 +107,15 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &-8292184245944426034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118165017511908187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6867d431c83a20947ab1ce6c895af4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
