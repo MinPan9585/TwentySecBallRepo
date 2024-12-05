@@ -6,7 +6,8 @@ public class PlayerControl : MonoBehaviour
 {
     //角色的移动状态
     public static bool isMoving = false;
-    
+    //角色状态机
+    public Animator anim;
     //绘制运动路径
     private Vector3 lastMousePosition;
     private Vector3 dashDirection;
@@ -203,6 +204,7 @@ public class PlayerControl : MonoBehaviour
         currentTargetIndex = 1;
         StartCoroutine(MoveToNextPoint());
         isMoving = true;
+        anim.SetBool("isMoving", true);
         lineRenderer.enabled = false;
     }
     
@@ -229,6 +231,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         isMoving = false;
+        anim.SetBool("isMoving", false);
         lineRenderer.enabled = true;
     }
 }
