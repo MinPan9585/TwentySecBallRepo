@@ -9797,6 +9797,26 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
+      propertyPath: maxSpeed
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
+      propertyPath: acceleration
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
+      propertyPath: dashDistance
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
+      propertyPath: deceleration
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
       propertyPath: lineRenderer
       value: 
       objectReference: {fileID: 81991763}
