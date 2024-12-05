@@ -12,18 +12,13 @@ public class EndGame : MonoBehaviour
     public float maxSpawnInterval = 2f;
     public Transform Player;
     public GameObject Enemy;
-    // Start is called before the first frame update
+
     void Start()
     {
         StartCoroutine(CountDownTimer());
         StartCoroutine(SpawnEnemy());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     IEnumerator CountDownTimer()
     {
         while (countDownTime > 0)
@@ -33,7 +28,7 @@ public class EndGame : MonoBehaviour
         }
 
         // 倒计时结束后的操作
-        gameOverText.GetComponent<Text>().text = "You Win!";
+        gameOverText.GetComponent<Text>().text = "Times Up!";
         gameOverText.SetActive(true);
         Time.timeScale = 0;
     }
@@ -43,9 +38,9 @@ public class EndGame : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(minSpawnInterval, maxSpawnInterval));
 
-            Vector3 spawnPos = Random.insideUnitCircle * spawnRadius;
-            spawnPos.y = 0; // 假设敌人是2D游戏物体，z坐标为0
-            spawnPos += Player.position;
+            Vector2 randomPos = Random.insideUnitCircle * spawnRadius;
+            //spawnPos.y = 0;
+            Vector3 spawnPos = Player.position + new Vector3(randomPos.x, 0, randomPos.y);
             Instantiate(Enemy, spawnPos, Quaternion.identity);
         }
     }

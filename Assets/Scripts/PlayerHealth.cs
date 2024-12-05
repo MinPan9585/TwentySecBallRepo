@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     int currentHealth;
     public Image hpBar;
     public GameObject gameOverText;
+    public GameObject hurtvfx;
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +31,7 @@ public class PlayerHealth : MonoBehaviour
     public void GetHurt()
     {
         currentHealth--;
+        //play sfx and vfx
+        Instantiate(hurtvfx, transform.position, Quaternion.identity);
     }
 }
