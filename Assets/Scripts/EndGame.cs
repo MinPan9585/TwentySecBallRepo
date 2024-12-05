@@ -16,7 +16,7 @@ public class EndGame : MonoBehaviour
     void Start()
     {
         StartCoroutine(CountDownTimer());
-        StartCoroutine(SpawnEnemy());
+        //StartCoroutine(SpawnEnemy());
     }
 
     IEnumerator CountDownTimer()
@@ -32,16 +32,16 @@ public class EndGame : MonoBehaviour
         gameOverText.SetActive(true);
         Time.timeScale = 0;
     }
-    IEnumerator SpawnEnemy()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(minSpawnInterval, maxSpawnInterval));
+    //IEnumerator SpawnEnemy()
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(Random.Range(minSpawnInterval, maxSpawnInterval));
 
-            Vector2 randomPos = Random.insideUnitCircle * spawnRadius;
-            //spawnPos.y = 0;
-            Vector3 spawnPos = Player.position + new Vector3(randomPos.x, 0, randomPos.y);
-            Instantiate(Enemy, spawnPos, Quaternion.identity);
-        }
-    }
+    //        Vector2 randomPos = Random.insideUnitCircle * spawnRadius;
+    //        //spawnPos.y = 0;
+    //        Vector3 spawnPos = Player.position + new Vector3(randomPos.x, 0, randomPos.y);
+    //        Instantiate(Enemy, spawnPos, Quaternion.identity);
+    //    }
+    //}
 }
