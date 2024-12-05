@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Cinemachine.Utility;
 using UnityEngine;
@@ -24,18 +25,35 @@ public class PlayerControl : MonoBehaviour
     //让碰撞点往回走一点，确保在碰撞体外
     public float rayFiner = 0.2f;
     //角色运动
-    public float dashDistance;
+    private float remainingDistance;
     private Vector3[] targetPoints;
     private int currentTargetIndex = 1;
-    public float maxSpeed = 5.0f; // 最大速度
-    public float acceleration = 2.0f; // 加速度
-    public float deceleration = 3.0f; // 减速率
-    
+    public float normalDashDistance;
+    public float normalMaxSpeed; // 默认最大速度
+    public float normalAcceleration; // 默认加速度
+    public float normalDeceleration; // 默认减速率
+    private float dashDistance;
+    private float maxSpeed; // 最大速度
+    private float acceleration; // 加速度
+    private float deceleration; // 减速率
+    //角色Buff
+    public GameObject buffvfx;
+    public float buffDashDistance;
+    public float buffMaxSpeed;
+    public float buffAcceleration;
+    public float buffDeceleration;
+    private bool isAddDashing = false;
+    public float buffDuration;
+    private Coroutine buffCoroutine;
     
     
     void Start()
     {
-        
+        //初始化角色运动参数
+        dashDistance = normalDashDistance;
+        maxSpeed = normalMaxSpeed;
+        acceleration = normalAcceleration;
+        deceleration = normalDeceleration;
     }
     
     void Update()
@@ -110,7 +128,7 @@ public class PlayerControl : MonoBehaviour
         //绘制起始点
         lineRenderer.positionCount++;
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, transform.position);
-        float remainingDistance = dashDistance;
+        remainingDistance = dashDistance;
         Vector3 nowdirection = dashDirection;
         Vector3 nowPosition = transform.position;
         while (remainingDistance > 0.0f)
@@ -229,9 +247,51 @@ public class PlayerControl : MonoBehaviour
             }
             currentTargetIndex++;
         }
-
+        
         isMoving = false;
         anim.SetBool("isMoving", false);
         lineRenderer.enabled = true;
+    }
+    
+    //碰撞加速点
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("DashCube")&&isMoving)
+        {
+            Destroy(other.gameObject);
+            if (buffCoroutine!= null)
+            {
+                StopCoroutine(buffCoroutine);
+                buffCoroutine = null;
+            }
+            buffCoroutine = StartCoroutine(BuffCoroutine());
+        }
+    }
+    //Buff状态撞击敌人
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Enemy")&&isAddDashing)
+        {
+            other.gameObject.GetComponent<EnemyOne>().GetHurt();
+        }
+    }
+    //Buff状态结束
+    private IEnumerator BuffCoroutine()
+    {
+        // Buff生效期间执行的代码
+        dashDistance = buffDashDistance;
+        maxSpeed = buffMaxSpeed;
+        acceleration = buffAcceleration;
+        deceleration = buffDeceleration;
+        isAddDashing = true;
+        GameObject vfx =  Instantiate(buffvfx, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(buffDuration);
+        // Buff结束时的处理
+        dashDistance = normalDashDistance;
+        maxSpeed = normalMaxSpeed;
+        acceleration = normalAcceleration;
+        deceleration = normalDeceleration;
+        isAddDashing = false;
+        Destroy(vfx);
     }
 }

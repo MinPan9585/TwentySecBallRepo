@@ -96,4 +96,9 @@ public class EnemyOne : MonoBehaviour
         startAction = false;
         isPausing = false;
     }
+    //Enemy死亡
+    public void GetHurt()
+    {
+       Destroy(gameObject);
+    }
 }

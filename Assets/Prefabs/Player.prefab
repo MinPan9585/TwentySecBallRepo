@@ -249,7 +249,7 @@ MonoBehaviour:
   maxHealth: 10
   hpBar: {fileID: 0}
   gameOverText: {fileID: 0}
-  hurtvfx: {fileID: 0}
+  hurtvfx: {fileID: 3873571560175566565, guid: 75990530749ad4941bc5ddffac708453, type: 3}
 --- !u!54 &1848545644872806291
 Rigidbody:
   m_ObjectHideFlags: 0
