@@ -7,11 +7,11 @@ public class EndGame : MonoBehaviour
 {
     public float countDownTime = 20f;
     public GameObject gameOverText;
-    public float spawnRadius = 5f; // 生成范围半径
-    public float minSpawnInterval = 1f;
-    public float maxSpawnInterval = 2f;
+    //public float spawnRadius = 5f; // 生成范围半径
+    //public float minSpawnInterval = 1f;
+    //public float maxSpawnInterval = 2f;
     public Transform Player;
-    public GameObject Enemy;
+    //public GameObject Enemy;
 
     void Start()
     {

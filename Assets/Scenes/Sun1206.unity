@@ -9807,6 +9807,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
+      propertyPath: buffDuration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
+      propertyPath: buffMaxSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
       propertyPath: dashDistance
       value: 16
       objectReference: {fileID: 0}
@@ -9820,6 +9830,41 @@ PrefabInstance:
       propertyPath: lineRenderer
       value: 
       objectReference: {fileID: 81991763}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
+      propertyPath: normalMaxSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
+      propertyPath: buffAcceleration
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
+      propertyPath: buffDashDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
+      propertyPath: buffDeceleration
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
+      propertyPath: normalAcceleration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
+      propertyPath: normalDashDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
+        type: 3}
+      propertyPath: normalDeceleration
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
       propertyPath: normalLineRenderer
