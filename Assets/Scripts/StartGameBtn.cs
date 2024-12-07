@@ -28,6 +28,6 @@ public class StartGameBtn : MonoBehaviour
         coverEnter.SetActive(true);
         yield return new WaitForSeconds(1.5f);
 
-        SceneManager.LoadScene("SunArt");
+        SceneManager.LoadScene("Sun");
     }
 }
