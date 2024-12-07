@@ -7,6 +7,14 @@ public class Spike : MonoBehaviour
     bool isUp = true;
     float speed = 1f;
     float timer = 3f;
+    Animator anim;
+    BoxCollider bc;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+        bc = GetComponent<BoxCollider>();
+    }
 
     void Update()
     {
@@ -19,25 +27,29 @@ public class Spike : MonoBehaviour
 
         if (isUp)
         {
-            if(transform.position.y <= 0f)
-            {
-                transform.position += Vector3.up * speed * Time.deltaTime;
-            }
-            else
-            {
-                return;
-            }
+            anim.SetTrigger("up");
+            bc.enabled = true;
+            //if(transform.position.y <= 0f)
+            //{
+            //    transform.position += Vector3.up * speed * Time.deltaTime;
+            //}
+            //else
+            //{
+            //    return;
+            //}
         }
         else
         {
-            if (transform.position.y >= -0.5f)
-            {
-                transform.position += Vector3.down * speed * Time.deltaTime;
-            }
-            else
-            {
-                return;
-            }
+            anim.SetTrigger("down");
+            bc.enabled = false;
+            //if (transform.position.y >= -0.5f)
+            //{
+            //    transform.position += Vector3.down * speed * Time.deltaTime;
+            //}
+            //else
+            //{
+            //    return;
+            //}
         }
     }
 

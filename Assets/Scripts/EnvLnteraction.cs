@@ -16,5 +16,11 @@ public class EnvLnteraction : MonoBehaviour
         Destroy(gameObject);
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            DestroyObject();
+        }
+    }
 }
