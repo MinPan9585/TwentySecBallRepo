@@ -46,6 +46,7 @@ public class Spike : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             other.GetComponent<PlayerHealth>().GetHurt();
+            SFXManager.instance.PlaySFX(SFXManager.instance.spikeClip);
         }
     }
 }

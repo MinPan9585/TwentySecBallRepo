@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
         if(other.tag == "Player")
         {
             other.GetComponent<PlayerHealth>().GetHurt();
+            SFXManager.instance.PlaySFX(SFXManager.instance.bulletHitClip);
             Destroy(gameObject);
         }
         else if (other.tag == "Wall")

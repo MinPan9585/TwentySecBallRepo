@@ -258,6 +258,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (other.gameObject.CompareTag("DashCube")&&isMoving)
         {
+            SFXManager.instance.PlaySFX(SFXManager.instance.buffPickupClip);
             Destroy(other.gameObject);
             if (buffCoroutine!= null)
             {
