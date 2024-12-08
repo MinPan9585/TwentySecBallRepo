@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
+    //延迟时间
+    public float waitTime;
+    private bool _isSpike = false;
     bool isUp = true;
     float speed = 1f;
     float timer = 3f;
@@ -12,44 +16,53 @@ public class Spike : MonoBehaviour
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
-        bc = GetComponent<BoxCollider>();
+        anim = gameObject.GetComponent<Animator>();
+        bc = gameObject.GetComponent<BoxCollider>();
+    }
+
+    private void Start()
+    {
+        _isSpike = false;
+        Invoke("Wait", waitTime);
     }
 
     void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        if (_isSpike)
         {
-            isUp = !isUp;
-            timer = 3f;
-        }
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                isUp = !isUp;
+                timer = 3f;
+            }
 
-        if (isUp)
-        {
-            anim.SetTrigger("up");
-            bc.enabled = true;
-            //if(transform.position.y <= 0f)
-            //{
-            //    transform.position += Vector3.up * speed * Time.deltaTime;
-            //}
-            //else
-            //{
-            //    return;
-            //}
-        }
-        else
-        {
-            anim.SetTrigger("down");
-            bc.enabled = false;
-            //if (transform.position.y >= -0.5f)
-            //{
-            //    transform.position += Vector3.down * speed * Time.deltaTime;
-            //}
-            //else
-            //{
-            //    return;
-            //}
+            if (isUp)
+            {
+                anim.SetTrigger("up");
+                bc.enabled = true;
+                //if(transform.position.y <= 0f)
+                //{
+                //    transform.position += Vector3.up * speed * Time.deltaTime;
+                //}
+                //else
+                //{
+                //    return;
+                //}
+            }
+            else
+            {
+                anim.SetTrigger("down");
+                bc.enabled = false;
+                //if (transform.position.y >= -0.5f)
+                //{
+                //    transform.position += Vector3.down * speed * Time.deltaTime;
+                //}
+                //else
+                //{
+                //    return;
+                //}
+            }
         }
     }
 
@@ -60,5 +73,10 @@ public class Spike : MonoBehaviour
             other.GetComponent<PlayerHealth>().GetHurt();
             SFXManager.instance.PlaySFX(SFXManager.instance.spikeClip);
         }
+    }
+
+    private void Wait()
+    {
+        _isSpike = true;
     }
 }
