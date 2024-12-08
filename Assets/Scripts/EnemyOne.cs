@@ -14,6 +14,7 @@ public class EnemyOne : MonoBehaviour
     Rigidbody rb;
     private GameObject player;
     public float bulletSpeed;
+    public GameObject dizzy;
 
     private void Awake()
     {
@@ -91,7 +92,11 @@ public class EnemyOne : MonoBehaviour
     IEnumerator PauseThree()
     {
         anim.SetTrigger("getHit");
+        dizzy.SetActive(true);
+
         yield return new WaitForSeconds(3);
+
+        dizzy.SetActive(false);
         isHit = false;
         startAction = false;
         isPausing = false;

@@ -12,11 +12,11 @@ public class EndGame : MonoBehaviour
     //public float maxSpawnInterval = 2f;
     public Transform Player;
     //public GameObject Enemy;
-    GameObject timerText;
+    Image timerImage;
 
     private void Awake()
     {
-        timerText = GameObject.Find("TimerText");
+        timerImage = GameObject.Find("TimeBarImage").GetComponent<Image>();
     }
     void Start()
     {
@@ -28,7 +28,8 @@ public class EndGame : MonoBehaviour
     {
         while (countDownTime > 0)
         {
-            timerText.GetComponent<Text>().text = countDownTime.ToString();
+            timerImage.fillAmount = countDownTime / 20f;
+            //timerText.GetComponent<Text>().text = countDownTime.ToString();
             yield return new WaitForSeconds(1);
             countDownTime -= 1;
         }

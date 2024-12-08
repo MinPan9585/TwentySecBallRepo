@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Cinemachine.Utility;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -45,8 +46,16 @@ public class PlayerControl : MonoBehaviour
     private bool isAddDashing = false;
     public float buffDuration;
     private Coroutine buffCoroutine;
-    
-    
+    bool isBuff = false;
+    float buffTimer;
+    Image energyImage;
+    GameObject fire;
+
+    private void Awake()
+    {
+        energyImage = GameObject.Find("EnergyBarImage").GetComponent<Image>();
+        fire = transform.Find("Fire").gameObject;
+    }
     void Start()
     {
         //初始化角色运动参数
@@ -54,6 +63,8 @@ public class PlayerControl : MonoBehaviour
         maxSpeed = normalMaxSpeed;
         acceleration = normalAcceleration;
         deceleration = normalDeceleration;
+
+        buffTimer = 0;
     }
     
     void Update()
@@ -66,6 +77,23 @@ public class PlayerControl : MonoBehaviour
                 PlayerMove();
             }
         }
+        CalculateEnergy();
+    }
+
+    void CalculateEnergy()
+    {
+        if(isBuff)
+        {
+            buffTimer -= Time.deltaTime;
+            if (buffTimer <= 0)
+            {
+                isBuff = false;
+                buffTimer = 0;
+                fire.SetActive(false);
+                anim.SetBool("isBuff", false);
+            }
+        }
+        energyImage.fillAmount = (float)buffTimer / buffDuration;
     }
 
     //获得鼠标当前指向运动方向
@@ -266,6 +294,10 @@ public class PlayerControl : MonoBehaviour
                 buffCoroutine = null;
             }
             buffCoroutine = StartCoroutine(BuffCoroutine());
+            isBuff = true;
+            fire.SetActive(true);
+            anim.SetBool("isBuff", true);
+            buffTimer = buffDuration;
         }
     }
     //Buff状态撞击敌人
@@ -286,6 +318,7 @@ public class PlayerControl : MonoBehaviour
         deceleration = buffDeceleration;
         isAddDashing = true;
         GameObject vfx =  Instantiate(buffvfx, transform.position, Quaternion.identity);
+
         yield return new WaitForSeconds(buffDuration);
         // Buff结束时的处理
         dashDistance = normalDashDistance;

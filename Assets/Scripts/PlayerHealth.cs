@@ -7,9 +7,14 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 10;
     int currentHealth;
-    public Image hpBar;
+    Image hpBar;
     public GameObject gameOverText;
     public GameObject hurtvfx;
+
+    private void Awake()
+    {
+        hpBar = GameObject.Find("HealthBarImage").GetComponent<Image>();
+    }
 
     // Start is called before the first frame update
     void Start()
