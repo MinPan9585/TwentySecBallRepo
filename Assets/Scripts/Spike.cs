@@ -68,8 +68,15 @@ public class Spike : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(SpikeHurtCd1.instance.canHurt == false)
         {
+            return;
+        }
+        if (other.gameObject.tag == "Player")
+        {
+            SpikeHurtCd1.instance.cdTimer = 1;
+            SpikeHurtCd1.instance.canHurt = false;
+            
             other.GetComponent<PlayerHealth>().GetHurt();
             SFXManager.instance.PlaySFX(SFXManager.instance.spikeClip);
         }

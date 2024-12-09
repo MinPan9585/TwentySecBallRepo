@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4971490943794064240}
   - component: {fileID: 4358960785876364642}
   - component: {fileID: 5046618625330492028}
+  - component: {fileID: 2190523888083694119}
   m_Layer: 0
   m_Name: GameSystem
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   countDownTime: 20
   gameOverText: {fileID: 0}
   Player: {fileID: 0}
+  isStarted: 0
 --- !u!114 &5046618625330492028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,3 +67,17 @@ MonoBehaviour:
     type: 3}
   bulletHitClip: {fileID: 8300000, guid: d8d04c6f80a1140db85ede568dab1f51, type: 3}
   buffPickupClip: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+--- !u!114 &2190523888083694119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760350941051996143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660d944e9c8d6645b30caa73241aec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cdTimer: 2
+  canHurt: 1
