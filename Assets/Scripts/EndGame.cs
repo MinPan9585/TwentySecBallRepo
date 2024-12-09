@@ -30,7 +30,7 @@ public class EndGame : MonoBehaviour
     IEnumerator CountDownTimer()
     {
 
-        while (countDownTime > 0)
+        while (countDownTime > -1)
             {
 
                 timerImage.fillAmount = countDownTime / 20f;
