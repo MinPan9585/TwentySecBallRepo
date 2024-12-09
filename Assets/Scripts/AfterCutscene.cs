@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class AfterCutscene : MonoBehaviour
 {
-    float timer = 5f;
+    float timer = 4.8f;
     public string nextScene;
 
     // Update is called once per frame

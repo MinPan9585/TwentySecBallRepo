@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: c80379c277cac37488f7da337d225d35
   - enabled: 1
-    path: Assets/Scenes/SunCutscene1207.unity
-    guid: 54f8f527716823a4395739ed7c40d67c
-  - enabled: 1
     path: Assets/Scenes/TutorialLevel.unity
     guid: b9e747462558c4e67bda5be0f89e4a99
+  - enabled: 1
+    path: Assets/Scenes/sUN1208cutscene.unity
+    guid: 2f27ad6ef51ec474bb7fe9a94ce7ec4d
   - enabled: 1
     path: Assets/Scenes/sUN1208.unity
     guid: 77854e44b53ddfc468e9f42865e670bc

@@ -25,7 +25,7 @@ public class EndPointTut : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("sUN1208");
+            SceneManager.LoadScene("sUN1208cutscene");
             //Debug.Log("碰到结束点");
             //gameOverText.GetComponent<Text>().text = "You Win!";
             //gameOverText.SetActive(true);
