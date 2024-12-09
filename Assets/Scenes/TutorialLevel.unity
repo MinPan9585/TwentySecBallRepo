@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11548,7 +11547,7 @@ PrefabInstance:
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
       propertyPath: normalMaxSpeed
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
@@ -11573,7 +11572,7 @@ PrefabInstance:
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
       propertyPath: normalDashDistance
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
@@ -40456,7 +40455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118167881}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000008680029, y: 0.9342147, z: -0.3567112, w: 0.000000022732705}
+  m_LocalRotation: {x: -0.000000008680033, y: 0.9342147, z: -0.35671118, w: -0.000000022732715}
   m_LocalPosition: {x: -0.83, y: 9.879999, z: 46.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -41192,7 +41191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131582193}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000008680029, y: 0.9342147, z: -0.3567112, w: 0.000000022732705}
+  m_LocalRotation: {x: -0.000000008680033, y: 0.9342147, z: -0.35671118, w: -0.000000022732715}
   m_LocalPosition: {x: -0.83, y: 9.879999, z: 46.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -41237,12 +41236,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!114 &2131582198
 MonoBehaviour:
   m_ObjectHideFlags: 0
