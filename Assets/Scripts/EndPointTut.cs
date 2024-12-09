@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class EndPoint : MonoBehaviour
+public class EndPointTut : MonoBehaviour
 {
-    public GameObject gameOverText;
+    //public GameObject gameOverText;
     
     // Start is called before the first frame update
     void Start()
@@ -26,10 +26,10 @@ public class EndPoint : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             SceneManager.LoadScene("sUN1208");
-            Debug.Log("碰到结束点");
-            gameOverText.GetComponent<Text>().text = "You Win!";
-            gameOverText.SetActive(true);
-            Time.timeScale = 0;
+            //Debug.Log("碰到结束点");
+            //gameOverText.GetComponent<Text>().text = "You Win!";
+            //gameOverText.SetActive(true);
+            //Time.timeScale = 0;
         }
         //throw new NotImplementedException();
     }
