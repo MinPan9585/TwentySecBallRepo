@@ -239,6 +239,7 @@ public class PlayerControl : MonoBehaviour
     {
         while (currentTargetIndex < targetPoints.Length)
         {
+            StartCoroutine(BulletCoroutine(0.1f));
             Vector3 targetPosition = targetPoints[currentTargetIndex];
             float speed = 0f;
             while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
@@ -353,5 +354,11 @@ public class PlayerControl : MonoBehaviour
     {
         Destroy(gameObject);
         Time.timeScale = 0f;
+    }
+
+    IEnumerator BulletCoroutine(float bulletTime)
+    {
+        Time.timeScale = 0.8f;
+        yield return new WaitForSeconds(bulletTime);
     }
 }
