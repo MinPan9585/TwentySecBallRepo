@@ -7,6 +7,7 @@ public class EndGame : MonoBehaviour
 {
     public float countDownTime = 20f;
     public GameObject gameOverText;
+    public GameObject gameOverImage;
     //public float spawnRadius = 5f; // 生成范围半径
     //public float minSpawnInterval = 1f;
     //public float maxSpawnInterval = 2f;
@@ -41,9 +42,10 @@ public class EndGame : MonoBehaviour
         }
 
             // 倒计时结束后的操作
-            gameOverText.GetComponent<Text>().text = "Times Up!";
-            gameOverText.SetActive(true);
-            Time.timeScale = 0;
+            //gameOverText.GetComponent<Text>().text = "Times Up!";
+            //gameOverText.SetActive(true);
+        gameOverImage.SetActive(true);
+        Time.timeScale = 0;
             PlayerControl.isDead = true;
     }
     //IEnumerator SpawnEnemy()

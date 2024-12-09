@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     int currentHealth;
     Image hpBar;
     public GameObject gameOverText;
+    public GameObject gameOverImage;
     public GameObject hurtvfx;
 
     private void Awake()
@@ -27,7 +28,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
-            gameOverText.SetActive(true);
+            //gameOverText.SetActive(true);
+            gameOverImage.SetActive(true);
             gameObject.GetComponent<PlayerControl>().anim.SetBool("isDead",true);
             gameObject.GetComponent<PlayerControl>().PlayerDie();
             //Time.timeScale = 0;
