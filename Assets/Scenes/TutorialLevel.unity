@@ -11537,7 +11537,7 @@ PrefabInstance:
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
       propertyPath: buffMaxSpeed
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
@@ -11547,12 +11547,12 @@ PrefabInstance:
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
       propertyPath: normalMaxSpeed
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
       propertyPath: buffAcceleration
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
@@ -11562,12 +11562,12 @@ PrefabInstance:
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
       propertyPath: buffDeceleration
-      value: 45
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
       propertyPath: normalAcceleration
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
@@ -11577,7 +11577,7 @@ PrefabInstance:
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
       propertyPath: normalDeceleration
-      value: 35
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1370844439851953259, guid: 800877bfe2c6146ac97aac5038fb6d10,
         type: 3}
