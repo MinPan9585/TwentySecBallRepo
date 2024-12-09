@@ -24,6 +24,7 @@ public class EndGame : MonoBehaviour
     {
         StartCoroutine(CountDownTimer());
         //StartCoroutine(SpawnEnemy());
+        GameObject.Find("Player").GetComponent<PlayerControl>().enabled = true;
     }
 
     IEnumerator CountDownTimer()
@@ -43,7 +44,7 @@ public class EndGame : MonoBehaviour
             gameOverText.GetComponent<Text>().text = "Times Up!";
             gameOverText.SetActive(true);
             Time.timeScale = 0;
-        
+            PlayerControl.isDead = true;
     }
     //IEnumerator SpawnEnemy()
     //{

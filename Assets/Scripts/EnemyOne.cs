@@ -46,7 +46,10 @@ public class EnemyOne : MonoBehaviour
     void Update()
     {
         //Debug.Log(isHit);
-        playerPos = player.transform.position;
+        if (player != null)
+        {
+            playerPos = player.transform.position;
+        }
 
         if (isHit && !isPausing)
         {

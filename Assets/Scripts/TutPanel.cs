@@ -12,14 +12,12 @@ public class TutPanel : MonoBehaviour
     {
         image1.SetActive(false);
         image2.SetActive(true);
-
-        Debug.Log("111");
     }
 
     public void Twice()
     {
         image2.SetActive(false);
-
         eg.isStarted = true;
+        GameObject.Find("GameSystem").GetComponent<EndGame>().enabled = true;
     }
 }

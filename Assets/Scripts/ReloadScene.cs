@@ -19,6 +19,6 @@ public class ReloadScene : MonoBehaviour
             SceneManager.LoadScene("sUN1208");
             //Time.timeScale = 1f;
         }
-        Debug.Log(Time.timeScale);
+        //Debug.Log(Time.timeScale);
     }
 }

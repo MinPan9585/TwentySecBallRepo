@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
+    //角色死亡
+    public static bool isStart = false;
+    //角色死亡
+    public static bool isDead = false;
     //角色的移动状态
     public static bool isMoving = false;
     //角色状态机
@@ -63,13 +67,14 @@ public class PlayerControl : MonoBehaviour
         maxSpeed = normalMaxSpeed;
         acceleration = normalAcceleration;
         deceleration = normalDeceleration;
-
         buffTimer = 0;
+        isMoving = false;
+        isDead = false;
     }
     
     void Update()
     {
-        if (!isMoving)
+        if (!isMoving&&!isDead)
         {
             GetDashDirection();
             if (Input.GetMouseButtonDown(0))
@@ -124,31 +129,6 @@ public class PlayerControl : MonoBehaviour
         }
     }
     
-    //生成运动路径
-    private void DrawDashPath()
-    {
-        lineRenderer.positionCount = 0;
-        //绘制起始点
-        lineRenderer.positionCount++;
-        lineRenderer.SetPosition(lineRenderer.positionCount - 1, transform.position);
-        float remainingDistance = dashDistance;
-        Vector3 nowdirection = dashDirection;
-        Vector3 nowPosition = transform.position;
-        while (remainingDistance > 0.0f)
-        {
-            NextRay nextRay = CastRay(nowPosition, nowdirection, remainingDistance);
-            // 绘制路径点到LineRenderer
-            lineRenderer.positionCount++;
-            lineRenderer.SetPosition(lineRenderer.positionCount - 1, nextRay.hitpoint);
-            if (nextRay.distance < 0)
-            {
-                break;
-            }
-            remainingDistance -= nextRay.distance;
-            nowdirection = nextRay.direction;
-            nowPosition = nextRay.hitpoint;
-        }
-    }
     
     //协程生成运动路径
     IEnumerator DrawDashPath_IE()
@@ -217,7 +197,7 @@ public class PlayerControl : MonoBehaviour
         Vector3 point = hitpoint - objectPoint;
         if (point.x - z > 0.01f)
         {
-            Debug.Log("Z边");
+            //Debug.Log("Z边");
             normal = new Vector3(objectForward.x, 0, objectForward.z);
             if (Vector3.Dot(normal, direction) > 0)
             {
@@ -226,7 +206,7 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
-            Debug.Log("X边");
+            //Debug.Log("X边");
             normal = new Vector3(-objectForward.z, 0, objectForward.x);
             if (Vector3.Dot(normal, direction) > 0)
             {
@@ -271,14 +251,41 @@ public class PlayerControl : MonoBehaviour
                     speed = Mathf.Lerp(speed, 0, deceleration * Time.deltaTime);
                 }
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+                //角色死亡时结束运动
+                if (isDead)
+                {
+                    break;
+                }
                 yield return null;
             }
             currentTargetIndex++;
         }
-        
+        //判断是否落空
+        if (!GroundCheck())
+        {
+            //anim.SetBool("isDeadInAir", true);
+            //isDead = true;
+        }
+        //
         isMoving = false;
         anim.SetBool("isMoving", false);
         lineRenderer.enabled = true;
+    }
+    
+    //判断落空
+    private bool GroundCheck()
+    {
+        // 从物体底部向下发射射线
+        Vector3 startPosition = transform.position;
+        Vector3 direction = -Vector3.up;
+        RaycastHit hit;
+        if (Physics.Raycast(startPosition, direction, out hit, 0.5f))
+        {
+            // 碰撞到地面
+            return true;
+        }
+        // 在空中
+        return false;
     }
     
     //碰撞加速点
@@ -327,5 +334,24 @@ public class PlayerControl : MonoBehaviour
         deceleration = normalDeceleration;
         isAddDashing = false;
         Destroy(vfx);
+    }
+    
+    //清空划线
+    public void ClearLineRenderer()
+    {
+        lineRenderer = null;
+    }
+    //游戏结束
+    public void PlayerDie()
+    {
+        isDead = true;
+        ClearLineRenderer();
+        Invoke("PlayerDieMethod",1f);
+    }
+
+    private void PlayerDieMethod()
+    {
+        Destroy(gameObject);
+        Time.timeScale = 0f;
     }
 }

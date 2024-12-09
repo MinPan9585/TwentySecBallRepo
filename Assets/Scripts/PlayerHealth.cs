@@ -28,7 +28,9 @@ public class PlayerHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             gameOverText.SetActive(true);
-            Time.timeScale = 0;
+            gameObject.GetComponent<PlayerControl>().anim.SetBool("isDead",true);
+            gameObject.GetComponent<PlayerControl>().PlayerDie();
+            //Time.timeScale = 0;
         }
         hpBar.fillAmount = (float)currentHealth / maxHealth;
     }
