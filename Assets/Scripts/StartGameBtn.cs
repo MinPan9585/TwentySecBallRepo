@@ -28,6 +28,6 @@ public class StartGameBtn : MonoBehaviour
         coverEnter.SetActive(true);
         yield return new WaitForSeconds(1.5f);
 
-        SceneManager.LoadScene("sUN1208");
+        SceneManager.LoadScene("TutorialLevel");
     }
 }

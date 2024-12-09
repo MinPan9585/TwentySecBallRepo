@@ -14,6 +14,8 @@ public class EndGame : MonoBehaviour
     //public GameObject Enemy;
     Image timerImage;
 
+    public bool isStarted = false;
+
     private void Awake()
     {
         timerImage = GameObject.Find("TimeBarImage").GetComponent<Image>();
@@ -26,18 +28,22 @@ public class EndGame : MonoBehaviour
 
     IEnumerator CountDownTimer()
     {
+
         while (countDownTime > 0)
-        {
-            timerImage.fillAmount = countDownTime / 20f;
-            //timerText.GetComponent<Text>().text = countDownTime.ToString();
-            yield return new WaitForSeconds(1);
-            countDownTime -= 1;
+            {
+
+                timerImage.fillAmount = countDownTime / 20f;
+                //timerText.GetComponent<Text>().text = countDownTime.ToString();
+                yield return new WaitForSeconds(1);
+                countDownTime -= 1;
+
         }
 
-        // 倒计时结束后的操作
-        gameOverText.GetComponent<Text>().text = "Times Up!";
-        gameOverText.SetActive(true);
-        Time.timeScale = 0;
+            // 倒计时结束后的操作
+            gameOverText.GetComponent<Text>().text = "Times Up!";
+            gameOverText.SetActive(true);
+            Time.timeScale = 0;
+        
     }
     //IEnumerator SpawnEnemy()
     //{
